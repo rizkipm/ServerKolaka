@@ -169,6 +169,25 @@ class Api extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function get_Slider(){ 
+		$data = array();
+	
+		$sql = "SELECT * FROM tb_info ORDER BY id_info DESC";
+        
+		$q = $this->db->query($sql);
+		if($q->num_rows() > 0){				
+			$data['result'] = 'true';
+			$data['msg'] = 'Data semua Slider';
+			$data['data'] = $q->result();
+		}else{
+			$data['result'] = 'false';
+			$data['msg'] = 'Tidak ada data Slider';
+		}
+		
+		//#pre($this->db->last_query());
+		echo json_encode($data);
+	}
+
 	
 
 
