@@ -169,6 +169,50 @@ class Api extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function get_menuByID(){ 
+		$data = array();
+
+		$id_menu = $this->input->post('id_menu');
+	
+		$sql = "SELECT * FROM tb_info WHERE id_menu = '$id_menu' ORDER by id_info DESC";
+        
+		$q = $this->db->query($sql);
+		if($q->num_rows() > 0){				
+			$data['result'] = 'true';
+			$data['msg'] = 'Data semua menu';
+			$data['data'] = $q->result();
+		}else{
+			$data['result'] = 'false';
+			$data['msg'] = 'Tidak ada data menu';
+		}
+		
+		//#pre($this->db->last_query());
+		echo json_encode($data);
+	}
+
+	public function get_infoByID(){ 
+		$data = array();
+
+		$id_info = $this->input->post('id_info');
+	
+		$sql = "SELECT * FROM tb_info WHERE id_info = '$id_info' ORDER by id_info DESC";
+        
+		$q = $this->db->query($sql);
+		if($q->num_rows() > 0){				
+			$data['result'] = 'true';
+			$data['msg'] = 'Data detail info';
+			$data['data'] = $q->result();
+		}else{
+			$data['result'] = 'false';
+			$data['msg'] = 'Tidak ada data info';
+		}
+		
+		//#pre($this->db->last_query());
+		echo json_encode($data);
+	}
+
+
+
 	public function get_Slider(){ 
 		$data = array();
 	
