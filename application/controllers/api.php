@@ -211,6 +211,27 @@ class Api extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function get_allMenu(){ 
+		$data = array();
+
+		// $id_info = $this->input->post('id_info');
+	
+		$sql = "SELECT * FROM tb_info  where id_menu = '8' ORDER by id_info DESC";
+        
+		$q = $this->db->query($sql);
+		if($q->num_rows() > 0){				
+			$data['result'] = 'true';
+			$data['msg'] = 'Data  info map';
+			$data['data'] = $q->result();
+		}else{
+			$data['result'] = 'false';
+			$data['msg'] = 'Tidak ada data info';
+		}
+		
+		//#pre($this->db->last_query());
+		echo json_encode($data);
+	}
+
 
 
 	public function get_Slider(){ 
